@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from .models import Note
+from .serializers import NoteSerializer
+
+
+class NotesAPIView(generics.ListAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
