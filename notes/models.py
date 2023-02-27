@@ -13,9 +13,9 @@ class Note(models.Model):
 
     def get_tags(self):
         temp_tags = self.tag.all()
-        tags = []
+        tags = {}
         for tag in temp_tags:
-            tags.append(tag.name)
+            tags[tag.name] = tag.color
         return tags
     get_tags.short_description = 'Теги'
 
