@@ -4,10 +4,14 @@ from .models import Note, Tag
 
 
 class NoteAdmin(admin.ModelAdmin):
-    list_display = ('caption', 'reminder_time', 'get_tags')
+    list_display = ('caption', 'reminder_time', 'tags')
 
 
 admin.site.register(Note, NoteAdmin)
 
 
-admin.site.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name', 'color')
+
+
+admin.site.register(Tag, TagAdmin)

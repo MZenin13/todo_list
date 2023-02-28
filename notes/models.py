@@ -11,13 +11,8 @@ class Note(models.Model):
     def __str__(self):
         return self.caption
 
-    def get_tags(self):
-        temp_tags = self.tag.all()
-        tags = {}
-        for tag in temp_tags:
-            tags[tag.name] = tag.color
-        return tags
-    get_tags.short_description = 'Теги'
+    def tags(self):
+        return self.tag.all().values()
 
 
 class Tag(models.Model):
