@@ -1,15 +1,23 @@
 from rest_framework import serializers
 
-from .models import Note
+from .models import Note, Tag
 
 
-class ViewSerializer(serializers.ModelSerializer):
+class NoteViewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
-        fields = ['id', 'caption', 'content', 'reminder_time', 'tags']
+        fields = ['id', 'caption', 'content', 'reminder_time', 'tags', 'user']
 
 
-class UpdateSerializer(serializers.ModelSerializer):
+class NoteUpdateSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Note
-        fields = ['id', 'caption', 'content', 'reminder_time', 'tag']
+        fields = ['id', 'caption', 'content', 'reminder_time', 'tag', 'user']
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = '__all__'
