@@ -37,6 +37,7 @@ class NotesAPI_Delete(generics.DestroyAPIView):
     permission_classes = (IsOwnerOrAdmin, )
 
 
+
 """ Для тегов """
 class TagsAPI_List(generics.ListCreateAPIView):
     queryset = Tag.objects.all()
