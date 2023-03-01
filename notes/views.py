@@ -1,16 +1,29 @@
-from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
-from rest_framework.response import Response
+from rest_framework import generics
 
 from .models import Note
 from .serializers import ViewSerializer, UpdateSerializer
 
 
-class NotesView(viewsets.ReadOnlyModelViewSet):
+class NotesAPI_List(generics.ListAPIView):
     queryset = Note.objects.all()
     serializer_class = ViewSerializer
 
 
-class NotesCreateUpdate(viewsets.ModelViewSet):
+class NotesAPI_Retrieve(generics.RetrieveAPIView):
+    queryset = Note.objects.all()
+    serializer_class = ViewSerializer
+
+
+class NotesAPI_Create(generics.CreateAPIView):
+    queryset = Note.objects.all()
+    serializer_class = UpdateSerializer
+
+
+class NotesAPI_Update(generics.RetrieveUpdateAPIView):
+    queryset = Note.objects.all()
+    serializer_class = UpdateSerializer
+
+
+class NotesAPI_Delete(generics.RetrieveDestroyAPIView):
     queryset = Note.objects.all()
     serializer_class = UpdateSerializer

@@ -1,11 +1,11 @@
 from django.urls import path
 
-from .views import NotesView, NotesCreateUpdate
+from .views import *
 
 urlpatterns = [
-    path('api/v1/notelist/', NotesView.as_view({'get': 'list'})),
-    path('api/v1/notelist/<int:pk>/', NotesView.as_view({'get': 'retrieve'})),
-    path('api/v1/notelist/<int:pk>/update/', NotesCreateUpdate.as_view({'get': 'retrieve', 'put': 'update'})),
-    path('api/v1/notelist/<int:pk>/delete/', NotesCreateUpdate.as_view({'get': 'retrieve', 'delete': 'destroy'})),
-    path('api/v1/notecreate/', NotesCreateUpdate.as_view({'post': 'create'})),
+    path('api/v1/notelist/', NotesAPI_List.as_view()),
+    path('api/v1/notelist/<int:pk>/', NotesAPI_Retrieve.as_view()),
+    path('api/v1/notelist/<int:pk>/update/', NotesAPI_Update.as_view()),
+    path('api/v1/notelist/<int:pk>/delete/', NotesAPI_Delete.as_view()),
+    path('api/v1/notecreate/', NotesAPI_Create.as_view()),
 ]
