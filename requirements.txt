@@ -3,3 +3,4 @@ django-colorfield==0.8.0
 djangorestframework==3.14.0
 djoser==2.1.0
 sqlparse~=0.4.3
+django-ninja==0.21.0

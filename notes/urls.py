@@ -1,5 +1,6 @@
 from django.urls import path, re_path, include
 
+from .api import api
 from .views import *
 
 urlpatterns = [
@@ -12,4 +13,5 @@ urlpatterns = [
     path('api/v1/tags/<int:pk>/', TagsAPI_RetrieveDelete.as_view()),
     path('api/v1/auth/', include('djoser.urls')),
     path('api/v1/auth/', include('djoser.urls.authtoken')),
+    path('api/ninja/', api.urls),
 ]
